@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flix Launcher</title>
+    <script src="../scripts/client.js"></script>
+    <script src="../scripts/warning.js"></script>
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" />
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+          <form action="javascript:void(0);" method="get">
+            <fieldset class="clearfix">
+              <div class="wrapper">
+                <p><span class="fontawesome-user"></span><input type="text" id="username" value="Email" onBlur="if(this.value == '') this.value = 'Email'" onFocus="if(this.value == 'Email') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Username" -->
+                <p><span class="fontawesome-lock"></span><input type="password" id="password" value="Password" onBlur="if(this.value == '') this.value = 'Password'" onFocus="if(this.value == 'Password') this.value = ''" required></p> <!-- JS because of IE support; better: placeholder="Password" -->
+              </div>
+              <p><input type="submit" value="login" id="play" onclick="init()"></p>
+            </fieldset>
+          </form>
+        </div>
+
+        <p>Aucun compte Mojang ? <a href="https://minecraft.net" target="_blank"> En acheter </a><span class="fontawesome-arrow-right"></span></p>
+      </div>
+
+      <script>
+
+        //======================= LOGIN ===================================
+        var executed = false;
+        async function changeURL(){
+            if (!executed) {
+                await window.location.replace("../html/logged.html");
+            executed = true;
+            }
+        }
+        function sleep(ms) {
+            return new Promise(resolve => setTimeout(resolve, ms));
+        }
+        
+        
+        document.getElementsByClassName('container')[0].classList.add('disabled');
+        var run = false;
+          if (!run) {
+              window.onload = (e) => {
+                remote.getCurrentWindow().title = "Flix Client"
+                    if(localStorage.getItem('auth')) {
+                        const auth = JSON.parse(localStorage.getItem('auth'));
+                        Authenticator.validate(auth.access_token, auth.client_token).then(e => {
+                            changeURL()
+                            document.getElementsByClassName('container')[0].classList.add('disabled');
+                        }).catch(e => {
+                            document.getElementsByClassName('container')[0].classList.add('fade-in');
+                            document.getElementsByClassName('container')[0].classList.remove('disabled');
+                        })
+                    } else {
+                        //const bar = new customTitlebar.Titlebar({
+                         //   backgroundColor: customTitlebar.Color.fromHex('#202529'),
+                            //titleHorizontalAlignement: "center",
+                           // icon: null,
+                           // menu: null
+                       // });  
+                        
+                        //bar.updateTitle(" ")
+                      document.getElementsByClassName('container')[0].classList.add('fade-in');
+                      document.getElementsByClassName('container')[0].classList.remove('disabled');
+                    }
+                }
+            run = true;
+        }
+
+        async function init() {
+            if(localStorage.getItem('auth')) {
+                const auth = JSON.parse(localStorage.getItem('auth'));
+                Authenticator.validate(auth.access_token, auth.client_token).then(async e => {
+                    changeURL()
+                    //await processClient(JSON.parse(localStorage.getItem('auth')));
+                    
+                }).catch(e => {
+                    document.getElementsByClassName('container')[0].classList.remove('disabled');
+                    prependError('wrongPass');
+                    console.warn(e)
+                });
+            } else {
+                
+            }
+
+            const login = {
+                username: document.getElementById("username").value,
+                password: document.getElementById("password").value
+            };
+
+            if(!login.username) {
+                prependError('missingField');
+            }
+
+            Authenticator.getAuth(login.username, login.password).then(async e => {
+                document.getElementsByClassName('container')[0].classList.add('fade-out');
+                changeURL()
+                //await processClient(JSON.parse(localStorage.getItem('auth')));
+                localStorage.setItem('auth', JSON.stringify(e));
+            }).catch(e => {
+                document.getElementsByClassName('container')[0].classList.remove('disabled');
+                prependError('wrongPass');
+                console.warn(e);
+            });
+        }
+
+      </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Flix Client</title>
+    <script src="../scripts/client.js"></script>
+    <script src="../scripts/warning.js"></script>
+    <link rel="stylesheet" href="../css/logged.css">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700" />
+</head>
+<body>
+  <div class="content">
+
+    <div class="login">
+      
+      
+      <form action="javascript:void(0);" method="get">
+            <fieldset class="">
+            <div class="launchbar">
+                  <p class="buttonlaunch"><input type="submit" id="launchgame" value="Lancer" onclick="processClient(JSON.parse(localStorage.getItem('auth')));"></p>
+                  <h1 class="versiontext" onclick="return null" >Version :</h1>
+                  <p class="versionlaunch">
+                    <select name="version" type="version" id="version" onchange="getversion()">
+                      <option value="1.7.10">1.7.10</option>
+                      <option value="1.8.9">1.8.9</option>
+                      <option value="1.9">1.9</option>
+                    </select>
+                  </p>
+                  <h1 id="welcome" onclick="return null">Bienvenue, </h1>
+                  <div class="LaunchingText">
+                    <p class="textlaunch" onclick="return null">Lancement du jeu...</p>
+                </div>
+              </div>
+            </fieldset>
+          </form>
+
+
+
+      </div>
+
+
+    <div class="topbar centertop">
+        <span onclick='return false'>
+          <p><h1 class="title center">Flix Client</h1></p>
+        </span>
+        <div class="lougoutclass">
+          <form action="javascript:logout();" method="get">
+            <fieldset class="clearfix">
+              <p class="buttonlaunch centerrightlogout"><input type="submit" id="logout" value="Se déconnecter" onclick="logout()" on></p>
+            </fieldset>
+          </form>
+        </div>
+      
+      <p class="headimg-p centerright"><img id="headimg"></p>
+
+
+    </div>
+
+
+    <div class="information">
+      <div class="infobar">
+        <div class="newsbar">
+          <h1 class="newstitle">News</h1>
+        </div>
+      </div>
+
+
+
+    </div>
+
+
+  </div>
+</body>
+</html>

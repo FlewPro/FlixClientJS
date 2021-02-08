@@ -1,0 +1,22 @@
+{
+  "name": "FlixClient",
+  "version": "1.0.0",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "author": "flew",
+  "license": "MIT",
+  "devDependencies": {
+    "electron": "^11.1.1",
+    "electron-builder": "^22.9.1"
+  },
+  "dependencies": {
+    "axios": "^0.21.1",
+    "custom-electron-titlebar": "^3.2.6",
+    "minecraft-launcher-core": "^3.16.1"
+  },
+  "description": ""
+}

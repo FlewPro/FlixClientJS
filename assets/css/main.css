@@ -1,0 +1,185 @@
+@import url(http://weloveiconfonts.com/api/?family=fontawesome);
+@import url(http://meyerweb.com/eric/tools/css/reset/reset.css);
+
+[class*="fontawesome-"]:before {
+  font-family: 'FontAwesome', sans-serif;
+}
+
+
+.disabled {
+    pointer-events: none;
+    opacity: 0;
+}
+
+
+
+
+@keyframes fadeIn{
+  0% {
+      opacity: 0;
+  }
+  50%{
+      opacity: 0.8;
+  }
+  100%{
+      opacity: 1;
+  }
+}
+@keyframes fadeOut{
+  0%{
+      opacity: 1;
+  }
+  50%{
+      opacity: 0.4;
+  }
+  100%{
+      opacity: 0;
+  }
+}
+.fade-in,.fade-out{
+  animation-duration: 2s;
+  animation-iteration-count: 1;
+  animation-delay: 0s;
+}
+.fade-in{
+  animation-name: fadeIn;
+}
+.fade-out{
+  animation-name: fadeOut;
+}
+.launched{
+  pointer-events: none;
+  opacity: 0.3;
+}
+
+* {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+*:before, *:after {
+  -moz-box-sizing: border-box;
+       box-sizing: border-box;
+}
+
+body {
+  background: #2c3338;
+  color: #606468;
+  font: 87.5%/1.5em 'Open Sans', sans-serif;
+  margin: 0;
+}
+a {
+  color:whitesmoke;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+input {
+  border: none;
+  font-family: 'Open Sans', Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5em;
+  padding: 0;
+  -webkit-appearance: none;
+}
+
+.draggable-area{
+  -webkit-app-region: drag;
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:before, .clearfix:after {
+  content: ' ';
+  display: table;
+}
+.clearfix:after {
+  clear: both;
+}
+
+.container {
+  left: 50%;
+  position: fixed;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+}
+
+
+
+
+/* ---------- LOGIN ---------- */
+
+.login {
+  width: 280px;
+}
+
+.login form span {
+  border: none;
+  outline: none;
+  background-color: #363b41;
+  border-radius: 8px 0px 0px 8px;
+  color: #606468;
+  display: block;
+  float: left;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  width: 50px;
+}
+
+.login form input {
+  height: 50px;
+}
+
+.login form input[type="text"], input[type="password"] {
+  outline: none;
+  border: none;
+  background-color: #3b4148;
+  border-radius: 0px 8px 8px 0px;
+  color: #606468;
+  margin-bottom: 1em;
+  padding: 0 16px;
+  width: 230px;
+}
+
+.login form input[type="submit"] {
+  border: none;
+  outline: none;
+  border-radius: 8px;
+  -moz-border-radius: 8px;
+  -webkit-border-radius: 8px;
+  background-color: #d5d5d5;
+  color: #4e4e4e;
+  font-weight: bold;
+  margin-bottom: 2em;
+  text-transform: uppercase;
+  width: 280px;
+}
+
+
+.login form input[type="submit"]:hover {
+  background-color: #464f58;
+  color: #d5d5d5;
+}
+
+.login > p {
+  text-align: center;
+}
+
+.login > p span {
+  padding-left: 5px;
+}
+
+ input#launchgame:hover{
+  background-color: rgb(160, 160, 160);
+ }
+
